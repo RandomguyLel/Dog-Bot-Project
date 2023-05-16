@@ -20,18 +20,20 @@ x = str(x)
 
 @client.event
 async def on_ready():
-    await client.change_presence(activity=discord.Game(name='replit edition'))
+    await client.change_presence(activity=discord.Game(
+        name='Woof woof Im a dog'))
 
     for guild in client.guilds:
         if guild.name == GUILD:
             break
-    print('Bot started at '+x)
+    print('Bot started at ' + x)
     print(f'{client.user} has connected to Discord!:\n'
           f'{client.user} is connected to the following guild:\n'
           f'{guild.name}(id: {guild.id})\n'
           f'Sometimes Life is Pain\n'
           f'for da love of god stop breakin shid\n'
           f'Riperino piperino instagramerino prejecterino')
+
 
 @client.event
 async def on_message(message):
@@ -52,7 +54,6 @@ async def on_message(message):
         await message.delete()
         await message.channel.send(f"Posted by {author}: {modified_link}")
 
-
 # Use regex to match a link starting with "https://twitter.com/"
     match = re.match(r'(https:\/\/twitter\.com\/\S+)', message.content)
 
@@ -62,6 +63,22 @@ async def on_message(message):
         author = message.author.name
         # Modify the link to replace "twitter" with "fxtwitter"
         modified_link = link.replace("twitter", "fxtwitter")
+
+        # Send the modified link as a message
+        await message.delete()
+        await message.channel.send(f"Posted by {author}: {modified_link}")
+
+
+# Use regex to match a link starting with "https://tiktok.com/"
+    match = re.match(r'(https?:\/\/(?:www\.)?tiktok\.com\/\S+)',
+                     message.content)
+
+    if match:
+        # Get the matched link
+        link = match.group(1)
+        author = message.author.name
+        # Modify the link to replace "tiktok" with "vxtiktok"
+        modified_link = link.replace("tiktok", "vxtiktok")
 
         # Send the modified link as a message
         await message.delete()
@@ -97,15 +114,17 @@ async def on_message(message):
         if message.content.startswith('$pain'):
             await message.delete()
 
+    # if message.content.startswith('e'):
+    #await message.channel.send('ko e ble')    #no way he brought back
+    #you dirsies your last dirst
+    #you e'd your last e
+    #
 
-    #if message.content.startswith('e'):
-    #await message.channel.send('ko e ble')#no way he brought back
     if message.content.startswith('dirst'):
         await message.channel.send('nedirsies daudz te ja')
 
     if message.content.startswith('pips'):
         await message.channel.send('pats ne labaks')
-
 
 keep_alive()
 client.run(TOKEN)
