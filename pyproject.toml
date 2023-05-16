@@ -8,9 +8,8 @@ authors = ["RandomguyLel"]
 python = "^3.8"
 discord = "^1.0.1"
 python-dotenv = "^0.15.0"
-flask = "^1.1.2"
-instagram-private-api = "^1.6.0"
-ctx = "^0.1.2"
+flask = "^2.3.2" #flask = "^1.1.2"
+#ctx = "^0.1.2"
 
 [tool.poetry.dev-dependencies]
 
